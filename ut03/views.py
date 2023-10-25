@@ -6,6 +6,7 @@ def welcome(request):
 
 def crea_tablero_form(request):
     # Si se ha enviado el formulario
+    tablero_form = CreaTableroForm()
     if request.method == 'GET':
         tablero_form = CreaTableroForm(request.GET)
         # Ejecutar validación
@@ -17,5 +18,4 @@ def crea_tablero_form(request):
                           {'filas': filas, 'columnas': columnas,
                            'rango_filas':range(filas), 'rango_columnas': range(columnas)})
     # Si se pide la página por primera vez
-    tablero_form = CreaTableroForm()
     return render(request, "ut03/crea_tablero.html", {'form': tablero_form})
