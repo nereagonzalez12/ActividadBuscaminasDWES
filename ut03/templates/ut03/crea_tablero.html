@@ -5,9 +5,10 @@
     <title>Crea Tablero</title>
 </head>
 <body>
-
-    <h1>Crea tablero</h1>
-    <a href="{% url 'crea_tablero' %}">Acceder a crea tablero</a>
+    <form method="get">
+        {{ form.as_div }}
+        <button type="submit">Enviar</button>
+    </form>
 
 </body>
 </html>
