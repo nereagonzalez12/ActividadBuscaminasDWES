@@ -5,7 +5,8 @@
     <title>Crea Tablero</title>
 </head>
 <body>
-    <form method="get">
+    <form method="POST">
+        {% csrf_token %}
         {{ form.as_div }}
         <button type="submit">Enviar</button>
     </form>
