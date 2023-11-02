@@ -20,3 +20,4 @@ class CreaTableroForm(forms.Form):
             raise ValidationError("Has puesto demasiadas minas")
 
         return nMinas
+

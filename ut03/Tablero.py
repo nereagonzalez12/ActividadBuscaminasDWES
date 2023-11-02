@@ -1,40 +1,25 @@
+from random import random
+
 from .forms import CreaTableroForm
+
+from .views import generar_minas
+
+class Casilla:
+    def __int__(self, fila, columna):
+        self.fila=fila
+        self.columna=columna
+        self.isMina=False
+        self.adyacentes=0
+
 
 #clase tablero
 class Tablero:
-
-    nFilas = CreaTableroForm.filas
-    nColumnas = CreaTableroForm.columnas
-    nMinas = CreaTableroForm.minas
-
-
-
-    listaTablero = [[]*nColumnas]*nFilas
-    #Lista de filas
-    for fila in listaTablero:
-        #Lista de casillas con atributos inicializados
-        for col in fila:
-            listaTablero[fila][col] = '-'
-
-
-    coordenadasMinas = {}
-    indiceFila=0
-    indiceColumna=0
-    for filaMinas in nMinas:
-        for colMinas in filaMinas
-
-
-
-
-
-
-
-
-#Clase casilla
-class Casilla:
-    def __int__(self, fila, columna, esMina, adyacentes):
-        self.fila=fila
-        self.columna=columna
-        self.esMina=esMina
-        self.adyacentes=adyacentes
+    def __init__(self, filas, columnas, nMinas):
+        self.filas=CreaTableroForm.filas
+        self.columnas=CreaTableroForm.columnas
+        self.nMinas=CreaTableroForm.minas
+        #genero la lista de coordenadas de las minas
+        self.minas=generar_minas(filas, columnas, nMinas)
+        #inicializo las casillas
+        self.casillas = [[Casilla(fila, columna) for columna in range(columnas)] for fila in range(filas)]
 
