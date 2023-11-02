@@ -15,8 +15,7 @@ class CreaTableroForm(forms.Form):
         nFilas = cleaned_data.get("filas")
         nColumnas = cleaned_data.get("columnas")
 
-        minasMax=int((nFilas+nColumnas)/2)
-
+        minasMax=(nFilas*nColumnas)//2
         if nMinas > minasMax:
             raise ValidationError("Has puesto demasiadas minas")
 
