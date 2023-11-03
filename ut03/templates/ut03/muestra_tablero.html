@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +12,21 @@
     Columnas {{ columnas }} <br>
     Minas {{ minas }} <br>
 
+
     <table style="border: 1px solid black;">
         {% for fila in rango_filas %}
             <tr style="height: 15px;">
                 {% for columna in rango_columnas %}
-                    <td style="width: 15px; border: 1px solid black;"></td>
+                    <td style="width: 15px; border: 1px solid black;">
+                        {# Obtén la casilla correspondiente a la fila y columna actual #}
+                        {% with fila=forloop.counter0 columna=forloop.parentloop.counter0 %}
+                            {% with casilla=casillas.fila.columna %}
+                                {% if casilla.minasActivas %}
+                                    <p>*</p>
+                                {% endif %}
+                            {% endwith %}
+                        {% endwith %}
+                    </td>
                 {% endfor %}
             </tr>
         {% endfor %}

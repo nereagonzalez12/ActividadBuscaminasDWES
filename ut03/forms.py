@@ -10,14 +10,15 @@ class CreaTableroForm(forms.Form):
     minas = forms.IntegerField(label='Minas', min_value=1, max_value=20, required=False)
     def clean_minas(self):
         # Los datos se cogen del diccionario cleaned_data
-        cleaned_data = super().clean()
-        nMinas = cleaned_data.get("minas")
-        nFilas = cleaned_data.get("filas")
-        nColumnas = cleaned_data.get("columnas")
 
-        minasMax=(nFilas*nColumnas)//2
-        if nMinas > minasMax:
+        nMinas = self.cleaned_data['minas']
+        nFilas = self.cleaned_data['filas']
+        nColumnas = self.cleaned_data['columnas']
+
+
+        if nMinas > (nFilas*nColumnas)//2:
             raise ValidationError("Has puesto demasiadas minas")
 
         return nMinas
+
 
