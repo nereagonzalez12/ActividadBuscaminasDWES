@@ -1,5 +1,5 @@
 from random import randint
-from .Tablero import Casilla
+from .Tablero import Casilla, Tablero
 
 from django.http import Http404
 from django.shortcuts import render
@@ -28,12 +28,14 @@ def crea_tablero_form(request):
             columnas = tablero_form.cleaned_data['columnas']
             filas = tablero_form.cleaned_data['filas']
             nMinas = tablero_form.cleaned_data['minas']
-            #generar minas aleatorioas
-            minas = generar_minas(filas, columnas, nMinas)
+
+            # Crear una instancia de Tablero
+            tablero = Tablero(filas, columnas, nMinas)
+            tablero.activarMinasYContarAdyacentes()
 
             return render(request, "ut03/muestra_tablero.html",
-                          {'filas': filas, 'columnas': columnas, 'minas': minas, 'casilla': Casilla,
-                           'rango_filas': range(filas), 'rango_columnas': range(columnas)})
+                          {'filas': filas, 'columnas': columnas, 'tablero': tablero, 'minas': nMinas,
+                            'rango_filas': range(filas), 'rango_columnas': range(columnas)})
 
 
         else:
