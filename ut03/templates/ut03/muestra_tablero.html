@@ -6,19 +6,22 @@
     <meta charset="UTF-8">
     <title>Muestra tablero</title>
 </head>
-<body>
+<body style="font-family: monospace; text-align: center; display: flex; flex-direction: row;
+        flex-wrap: wrap; justify-content: center">
 
-    Filas {{ filas }} <br>
-    Columnas {{ columnas }} <br>
-    Minas {{ minas }} <br>
+    <div style="width: 100%">
+        Filas: {{ filas }} <br>
+        Columnas: {{ columnas }} <br>
+        Minas: {{ minas }} <br>
+    </div>
 
-    <table style="border: 1px solid black; background-color: darkgray">
+    <table style="background-color: darkgray; width: 40%">
         {% for fila in tablero.casillas %}
             <tr style="height: 30px;">
                 {% for casilla in fila %}
                     <td style="width: 25px; border: 3px solid black; background-color: darkgray; border-bottom-color: dimgray;
                     border-right-color: dimgrey; border-top-color: aliceblue; border-left-color:  aliceblue; text-align: center;
-                    font-family: monospace; color: red;
+                    color: red;
                     font-weight: bold">
                         {% if casilla.isMina %}
                             💣
